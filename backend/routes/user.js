@@ -1,10 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 
 const zod = require("zod");
 const { User, Account } = require("../db");
 const jwt= require("jsonwebtoken");
-const { JWT_SECRET } = require("../config");
 const  { authMiddleware } = require("../middleware");
 
 
@@ -18,7 +18,6 @@ const signupBody= zod.object({
 
 router.get("/me", authMiddleware, async (req, res) => {
     const userID = req.userID;
-
     if (!userID) {
         return res.status(403).json({ msg: "User is not logged in" });
     }
@@ -96,7 +95,7 @@ router.post("/signup",async (req,res)=>{
     })
 
     const token = jwt.sign({
-        userID},JWT_SECRET
+        userID},process.env.JWT_SECRET
     );
 
     res.status(200).json({
@@ -133,7 +132,7 @@ if(!existingUser){
 
 const token = jwt.sign({
     userID:existingUser._id
-},JWT_SECRET);
+},process.env.JWT_SECRET);
 
 res.status(200).json({token:token});
 
