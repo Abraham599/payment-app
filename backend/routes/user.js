@@ -141,48 +141,28 @@ return;
 
 })
 
-const updatedBody = zod.object({
-    firstName: zod.string().optional(),
-    lastName: zod.string().optional(),
-    password: zod.string().optional()
-});
+// const updatedBody = zod.object({
+//     firstName: zod.string().optional(),
+//     lastName: zod.string().optional(),
+//     password: zod.string().optional()
+// });
 
-router.put("/",async (req,res)=>{
-   const {success} = updatedBody.safeParse(req.body);
+// router.put("/",async (req,res)=>{
+//    const {success} = updatedBody.safeParse(req.body);
    
-   if(!success){
-    return res.status(411).json({message:"Please enter correct format"});
-   }
-  await User.updateOne(req.body,{
-    id:req.userID
-  });
+//    if(!success){
+//     return res.status(411).json({message:"Please enter correct format"});
+//    }
+//   await User.updateOne(req.body,{
+//     id:req.userID
+//   });
 
-  res.status(200).json({message:"Updated the information"});
+//   res.status(200).json({message:"Updated the information"});
 
-})
+// })
 
 
-router.get("/bulk/?filterUser=John", async (req, res) => {
-    try {
-        const filter = req.query.filterUser || "";
-        const desiredUsers = await User.find({
-            $or: [
-                { firstName: { "$regex": filter, "$options": "i" } }, // Case-insensitive regex matching
-                { lastName: { "$regex": filter, "$options": "i" } }
-            ]
-        });
 
-        res.status(200).json({ user: desiredUsers.map(user => ({
-            username: user.username,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            id: user._id
-        })) });
-    } catch (error) {
-        console.error("Error fetching filtered users:", error);
-        res.status(500).json({ error: "Internal server error" });
-    }
-});
 
 
 module.exports = router;
