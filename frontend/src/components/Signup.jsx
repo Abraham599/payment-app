@@ -10,7 +10,7 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/signup", {
+      const response = await fetch("https://65ca2e69eab65d000860f9b9--payment-app-backend.netlify.app/signup", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
