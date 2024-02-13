@@ -140,29 +140,4 @@ return;
 
 
 })
-
-// const updatedBody = zod.object({
-//     firstName: zod.string().optional(),
-//     lastName: zod.string().optional(),
-//     password: zod.string().optional()
-// });
-
-// router.put("/",async (req,res)=>{
-//    const {success} = updatedBody.safeParse(req.body);
-   
-//    if(!success){
-//     return res.status(411).json({message:"Please enter correct format"});
-//    }
-//   await User.updateOne(req.body,{
-//     id:req.userID
-//   });
-
-//   res.status(200).json({message:"Updated the information"});
-
-// })
-
-
-
-
-
 module.exports = router;
