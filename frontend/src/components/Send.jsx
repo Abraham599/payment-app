@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import {useNavigate, useSearchParams } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { successAtom } from "./store/atoms/UserDataAtom";
 
@@ -12,7 +12,7 @@ const Send = ()=>{
     const name = searchParam.get("name");
     const initiateTransfer = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/v1/account/transfer", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}api/v1/account/transfer`, {
                 method: 'POST',
                 body: JSON.stringify({
                     to: id,

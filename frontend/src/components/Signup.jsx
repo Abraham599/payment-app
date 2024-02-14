@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userDataAtom } from "./store/atoms/UserDataAtom";
-
 const Signup = () => {
   const [userData, setUserData] = useRecoilState(userDataAtom);
   const [error, setError] = useState("");
@@ -10,7 +9,7 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/signup", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}api/v1/user/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

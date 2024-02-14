@@ -16,7 +16,7 @@ export const useUser = () => {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/v1/user/me", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}api/v1/user/me`, {
                 method: 'GET',
                 headers: {
                     Authorization: "Bearer " + token // Use the retrieved token directly
