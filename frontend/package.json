@@ -1,7 +1,8 @@
 {
-  "name": "frontend",
+  "homepage": "https://payment-app-tan.vercel.app/",
+  "name": "payment-app",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
